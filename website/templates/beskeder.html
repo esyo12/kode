@@ -1,0 +1,40 @@
+<script>
+    async function reload() {
+        console.log("test");
+        await new Promise(res => setTimeout(res, 5000));
+        window.location.reload();
+    }
+
+    reload();
+</script>
+
+
+<h1>Beskeder</h1>
+<p><a href="/">tilbage</a></p>
+
+<form method="POST">
+    <input type="text" for="besked" name="besked" id="besked"> 
+    <button type="submit">send</button>
+</form>
+
+<hr>
+
+<ul>
+    {% for besked in reneBeskeder %}
+    <li class="chat">
+        {{  besked  }}
+    </li>
+    {% endfor %}
+</ul>
+
+
+<style>
+    .chat {
+        background-color: lime;
+        padding: 20px;
+        margin: 10px;
+        list-style-type: none;
+        border-radius: 10px;
+        width: fit-content;
+    }
+</style>
