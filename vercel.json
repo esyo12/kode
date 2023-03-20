@@ -1,0 +1,11 @@
+{
+  "buildCommand": "pip install -r requirements.txt",
+  "devCommand": "flask run --port $PORT",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
+  ]
+}
