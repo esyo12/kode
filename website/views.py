@@ -37,6 +37,7 @@ def  hentBeskeder():
     reneBeskeder = []
     for besked in beskeder:
         reneBeskeder.append(besked.besked)
+        
     
     reneBeskeder.reverse()
     return reneBeskeder
