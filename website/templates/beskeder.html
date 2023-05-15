@@ -2,11 +2,13 @@
     //async function reload() {
     //    console.log("test");
     //    await new Promise(res => setTimeout(res, 5000));
-    //    window.location.reload();
     //}
     //reload();
+    function myclick() {
+        console.log("test");
+        window.location.href = window.location.href;
+    }
 </script>
-
 
 <h1>Beskeder</h1>
 <p><a href="/">tilbage</a></p>
@@ -15,7 +17,7 @@
     <input type="text" for="besked" name="besked" id="besked"> 
     <button type="submit">send</button>
 </form>
-
+<button onclick="myclick()" id="opdater">opdater</button>
 <hr>
 
 <ul>
