@@ -12,7 +12,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
-    from .views import views
+    from .app import views
 
     app.register_blueprint(views, url_prefix='/')
 
