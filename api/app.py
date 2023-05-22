@@ -6,6 +6,7 @@ from sqlalchemy.engine import URL
 import os
 import random
 import json
+print("after import")
 
 beskedindeks=0
 app = Flask(__name__)
@@ -13,6 +14,8 @@ views = Blueprint("views",__name__)
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+
+print("environment", os.environ)
 
 app.config['SECRET_KEY'] = 'hej'
 if 'POSTGRES_URL' not in os.environ:
@@ -25,6 +28,7 @@ app.register_blueprint(views, url_prefix='/')
 from . import models
 with app.app_context():
     db.create_all()
+print("after config")
 
 @app.route("/")
 def forside():
@@ -62,4 +66,4 @@ def  hentBeskeder():
 
 
 
-
+print("after routes")
