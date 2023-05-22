@@ -1,12 +1,24 @@
 from flask import Flask, render_template, request, Blueprint
 from .models import Besked
-from . import db
+from flask_sqlalchemy import SQLAlchemy
 import random
 import json
 
 beskedindeks=0
 app = Flask(__name__)
 views = Blueprint("views",__name__)
+
+db = SQLAlchemy()
+DB_NAME = "database.db"
+
+app.config['SECRET_KEY'] = 'hej'
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_NAME}"
+db.init_app(app)
+from .app import views
+app.register_blueprint(views, url_prefix='/')
+from . import models
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def forside():
