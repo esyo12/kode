@@ -25,7 +25,7 @@ def forside():
     return render_template("forside.html")
 
 
-@views.route("/beskeder", methods=["GET" , "POST"])
+@app.route("/beskeder", methods=["GET" , "POST"])
 def beskeder():
     reneBeskeder = hentBeskeder()
     
