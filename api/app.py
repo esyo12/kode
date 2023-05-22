@@ -32,7 +32,7 @@ print("after config")
 
 @app.route("/")
 def forside():
-    return render_template("forside.html")
+    return render_template("forside.html", env=os.environ)
 
 
 @app.route("/beskeder", methods=["GET" , "POST"])
