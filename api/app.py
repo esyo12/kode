@@ -13,7 +13,7 @@ def forside():
     return render_template("forside.html")
 
 
-@app.route("/beskeder", methods=["GET" , "POST"])
+@views.route("/beskeder", methods=["GET" , "POST"])
 def beskeder():
     reneBeskeder = hentBeskeder()
     
