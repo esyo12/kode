@@ -18,7 +18,7 @@ DB_NAME = "database.db"
 print("environment", os.environ)
 
 app.config['SECRET_KEY'] = 'hej'
-if 'POSTGRES_URL' not in os.environ:
+if True: #'POSTGRES_URL' not in os.environ:
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_NAME}"
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["POSTGRES_URL"]
