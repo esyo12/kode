@@ -5,15 +5,15 @@ import random
 import json
 
 beskedindeks=0
-
+app = Flask(__name__)
 views = Blueprint("views",__name__)
 
-@views.route("/")
+@app.route("/")
 def forside():
     return render_template("forside.html")
 
 
-@views.route("/beskeder", methods=["GET" , "POST"])
+@app.route("/beskeder", methods=["GET" , "POST"])
 def beskeder():
     reneBeskeder = hentBeskeder()
     
