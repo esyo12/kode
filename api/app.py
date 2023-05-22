@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, Blueprint
 from .models import Besked
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.engine import URL
+import os
 import random
 import json
 
@@ -12,7 +15,10 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 
 app.config['SECRET_KEY'] = 'hej'
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_NAME}"
+if 'POSTGRES_URL' not in os.environ:
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_NAME}"
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["POSTGRES_URL"]
 db.init_app(app)
 from .app import views
 app.register_blueprint(views, url_prefix='/')
