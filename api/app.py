@@ -12,7 +12,7 @@ beskedindeks=0
 app = Flask(__name__)
 views = Blueprint("views",__name__)
 
-db = SQLAlchemy()
+
 DB_NAME = "database.db"
 
 print("environment", os.environ)
@@ -22,7 +22,8 @@ if 'POSTGRES_URL' not in os.environ:
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_NAME}"
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["POSTGRES_URL"]
-db.init_app(app)
+db = SQLAlchemy(app)
+#db.init_app(app)
 from .app import views
 app.register_blueprint(views, url_prefix='/')
 from . import models
